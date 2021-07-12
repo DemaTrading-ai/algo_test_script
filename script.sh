@@ -21,7 +21,6 @@ for config in *.json
       then
         echo $config
         mkdir "output/$config"
-#        /bin/bash ./.dema/script.sh $config "$(pwd)/output/$config"
         if [ -n "$config" ]; then
           echo "BACKTESTING SINGLE CONFIG: ${config}\n\n\n"
           work 20200601 20210625 $config
