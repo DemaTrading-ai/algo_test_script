@@ -14,6 +14,7 @@ work () {
   sed -i 's/\x1B[@A-Z\\\]^_]\|\x1B\[[0-9:;<=>?]*[-!"#$%&'"'"'()*+,.\/]*[][\\@A-Z^_`a-z{|}~]//g' $targetdir/$config.txt
 }
 
+echo $(pwd)
 mkdir output
 for config in *.json
   do
@@ -25,7 +26,7 @@ for config in *.json
           echo "BACKTESTING SINGLE CONFIG: ${config}\n\n\n"
           work 20190601 20210701 $config false
           work 20200601 20210625 $config true
-          cp ./data/plots/ "output/$config/"
+          cp ./data/plots "output/$config/"
           work 20210221 20210228 $config false
           work 20210428 20210527 $config false
         fi
