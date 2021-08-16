@@ -16,6 +16,7 @@ work () {
 
 echo $(pwd)
 mkdir output
+date_format=$(date +'%Y%m%d')
 for config in *.json
   do
     if [ "$config" != "config.json" ]
@@ -24,8 +25,8 @@ for config in *.json
         mkdir "output/$config"
         if [ -n "$config" ]; then
           echo "BACKTESTING SINGLE CONFIG: ${config}\n\n\n"
-          work 20190601 20210701 $config false
-          work 20200601 20210625 $config true
+          work 20190601 $date_format $config false
+          work 20200601 $date_format $config true
           cp ./data/plots "output/$config/"
           work 20210221 20210228 $config false
           work 20210428 20210527 $config false
