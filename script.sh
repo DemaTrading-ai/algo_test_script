@@ -28,7 +28,7 @@ for config in *.json
           work 20190601 $date_format $config false
           work 20200601 $date_format $config true
           mkdir "output/$config/plots"
-          cp ./data/backtesting-data/plots "output/$config/plots/"
+          cp -a ./data/backtesting-data/plots/. "output/$config/plots/"
           work 20210221 20210228 $config false
           work 20210428 20210527 $config false
         fi
