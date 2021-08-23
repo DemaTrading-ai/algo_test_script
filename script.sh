@@ -28,6 +28,7 @@ for config in *.json
           work 20190601 $date_format $config true
           mkdir "output/$config/plots"
           cp -a ./data/backtesting-data/plots/. "output/$config/plots/"
+          rm -r ./data/backtesting-data/plots/.
           work 20200601 $date_format $config false
           work 20210221 20210228 $config false
           work 20210428 20210527 $config false
@@ -37,6 +38,7 @@ for config in *.json
         strategy=$(grep "class $name" ./strategies/*.py --files-with-matches)
         cp "$strategy" "output/$config/"
         cp "$config" "output/$config/"
+        zip -r ./output.zip "output/"
     fi
   done
 
