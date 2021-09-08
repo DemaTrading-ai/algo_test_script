@@ -38,7 +38,9 @@ for config in *.json
         strategy=$(grep "class $name" ./strategies/*.py --files-with-matches)
         cp "$strategy" "output/$config/"
         cp "$config" "output/$config/"
-        zip -r ./output.zip "output/"
     fi
   done
+
+zip -r ./output.zip "output/"
+cp ./output.zip "output/"
 
