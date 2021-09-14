@@ -6,7 +6,7 @@ work () {
   local config=$3
   local plots=$4
   targetdir=$(pwd)/output/$config
-  docker run -v "$(pwd)/strategies:/usr/src/engine/strategies" \
+  docker run --pull always -v "$(pwd)/strategies:/usr/src/engine/strategies" \
     -v "$(pwd)/${config}:/usr/src/engine/config.json" \
     -v "$(pwd)/data/backtesting-data:/usr/src/engine/data/backtesting-data" \
     --rm dematrading/engine:develop -from $from -to $to -plots=$plots  \
