@@ -12,11 +12,12 @@ work () {
     -v "$(pwd)/data/backtesting-data:/usr/src/engine/data/backtesting-data" \
     --rm dematrading/engine:develop -from $from -to $to -plots=$plots \
     >>$targetdir/$config.txt
-  sed -i 's/\x1B[@A-Z\\\]^_]\|\x1B\[[0-9:;<=>?]*[-!"#$%&'"'"'()*+,.\/]*[][\\@A-Z^_`a-z{|}~]//g' $targetdir/$config.txt
-  
+    
   if [ "$html" = true ] ; then
-    grep --color=always $targetdir/$config.txt | aha --black --title $config > $targetdir/$config.html
+    cat $targetdir/$config.txt | aha --black --title $config > $targetdir/$config.html
   fi
+  
+  sed -i 's/\x1B[@A-Z\\\]^_]\|\x1B\[[0-9:;<=>?]*[-!"#$%&'"'"'()*+,.\/]*[][\\@A-Z^_`a-z{|}~]//g' $targetdir/$config.txt
 }
 
 
