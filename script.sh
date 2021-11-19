@@ -13,6 +13,7 @@ work () {
 #     >>$targetdir/$config.txt
     | aha --black --title 'ls-with-colors' > test_with_colors.html
 #   sed -i 's/\x1B[@A-Z\\\]^_]\|\x1B\[[0-9:;<=>?]*[-!"#$%&'"'"'()*+,.\/]*[][\\@A-Z^_`a-z{|}~]//g' $targetdir/$config.txt
+  cp test_with_colors.html ./output
 }
 
 
