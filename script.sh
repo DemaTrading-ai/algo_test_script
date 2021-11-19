@@ -1,6 +1,7 @@
 #!/env/bin/bash
 
 work () {
+  sudo apt-get -y install aha
   local from=$1
   local to=$2
   local config=$3
@@ -14,8 +15,6 @@ work () {
     aha --black --title 'ls-with-colors' > test_with_colors.html
 #   sed -i 's/\x1B[@A-Z\\\]^_]\|\x1B\[[0-9:;<=>?]*[-!"#$%&'"'"'()*+,.\/]*[][\\@A-Z^_`a-z{|}~]//g' $targetdir/$config.txt
 }
-
-apt-get -y install aha
 
 
 echo $(pwd)
