@@ -35,9 +35,9 @@ for config in *.json
           work 20190601 $date_format $config true true
           mkdir "output/$config/plots"
           cp -a ./data/backtesting-data/plots/. "output/$config/plots/"
-          cp ./data/backtesting-data/trades_log.json "output/$config/"
+          cp ./data/backtesting-data/trades_log_*.json "output/$config/"
           sudo rm -r ./data/backtesting-data/plots
-          sudo rm ./data/backtesting-data/trades_log.json
+          sudo rm ./data/backtesting-data/trades_log_*.json
           work 20200601 $date_format $config false false
           work 20210221 20210228 $config false false
           work 20210428 20210527 $config false false
