@@ -10,7 +10,7 @@ work () {
   docker run --pull always -v "$(pwd)/strategies:/usr/src/engine/strategies" \
     -v "$(pwd)/${config}:/usr/src/engine/config.json" \
     -v "$(pwd)/data/backtesting-data:/usr/src/engine/data/backtesting-data" \
-    --rm dematrading/engine:develop -from $from -to $to -plots=$plots \
+    --rm dematrading/engine:develop -from $from -to $to -no-plots=$plots \
     >>$targetdir/$config.txt
     
   if [ "$html" = true ] ; then
@@ -32,15 +32,15 @@ for config in *.json
         mkdir "output/$config"
         if [ -n "$config" ]; then
           echo "BACKTESTING SINGLE CONFIG: ${config}\n\n\n"
-          work 20190601 $date_format $config true true
+          work 20190601 $date_format $config false true
           mkdir "output/$config/plots"
           cp -a ./data/backtesting-data/plots/. "output/$config/plots/"
           cp ./data/backtesting-data/trades_log_*.json "output/$config/"
           sudo rm -r ./data/backtesting-data/plots
           sudo rm ./data/backtesting-data/trades_log_*.json
-          work 20200601 $date_format $config false false
-          work 20210221 20210228 $config false false
-          work 20210428 20210527 $config false false
+          work 20200601 $date_format $config true false
+          work 20210221 20210228 $config true false
+          work 20210428 20210527 $config true false
         fi
 
         name=$(cat $config |  jq '."strategy-name"' -r)
